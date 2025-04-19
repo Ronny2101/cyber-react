@@ -1,20 +1,21 @@
 import React from "react";
-import "../css/app.css";
-import { RippleBadge } from "./MaterialTheme/styled";
-import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import { HomePage } from "./screens/homePage";
 import { ProductPage } from "./screens/userPage";
 import { OrdersPage } from "./screens/orderPage";
 import { UserPage } from "./screens/productPage";
-import { Footer } from "./components/footer";
 import { HomeNavbar } from "./components/headers/HomeNavbar";
 import { OtherNavbar } from "./components/headers/OtherNavbar";
+import { Footer } from "./components/footer";
+import "../css/app.css";
+import "../css/navbar.css";
 
 function App() {
   const location = useLocation();
+
   return  (
     <>
-      {location.pathname === "/" ? <HomeNavbar/> : <OtherNavbar/>}
+      {location.pathname === "/" ? <HomeNavbar /> : <OtherNavbar />}
       <Switch>
         <Route path="/products">
           <ProductPage />
