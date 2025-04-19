@@ -1,14 +1,17 @@
 import React from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
-import { HomePage } from "./screens/homePage";
-import { ProductPage } from "./screens/userPage";
-import { OrdersPage } from "./screens/orderPage";
-import { UserPage } from "./screens/productPage";
-import { HomeNavbar } from "./components/headers/HomeNavbar";
-import { OtherNavbar } from "./components/headers/OtherNavbar";
-import { Footer } from "./components/footer";
+import  HomePage  from "./screens/homePage";
+import  ProductPage  from "./screens/userPage";
+import  OrdersPage  from "./screens/orderPage";
+import  UserPage  from "./screens/productPage";
+import  HomeNavbar  from "./components/headers/HomeNavbar";
+import  OtherNavbar  from "./components/headers/OtherNavbar";
+import  Footer  from "./components/footer";
+import HelpPage  from "./screens/helpPage";
 import "../css/app.css";
 import "../css/navbar.css";
+import "../css/footer.css";
+ 
 
 function App() {
   const location = useLocation();
