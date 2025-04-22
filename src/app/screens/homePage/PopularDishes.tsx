@@ -4,7 +4,7 @@ import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import {CssVarsProvider} from "@mui/joy/styles";
+import { CssVarsProvider } from "@mui/joy/styles";
 import CardOverflow  from "@mui/joy/CardOverflow";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DescriptionOutlinedIcon  from "@mui/icons-material/DescriptionOutlined";
@@ -65,7 +65,7 @@ export default function PopularDishes() {
                                                 gap: 1.5,
                                                 py: 1.5,
                                                 px: "var(--Card-padding)",
-                                                borderTop: "1px, solid",
+                                                borderTop: "1px solid",
                                                 height: "60px",
                                             }}
                                         >
