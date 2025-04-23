@@ -27,7 +27,7 @@ export default function ActiveUsers() {
                                         <Card key={index} variant="outlined" className={"card"}>
                                             <CardOverflow>
                                                 <AspectRatio ratio="1">
-                                                <img src={ele.memberImage} alt="" />
+                                                  <img src={ele.memberImage} alt="" />
                                                 </AspectRatio>
                                             </CardOverflow>
                                             <Stack

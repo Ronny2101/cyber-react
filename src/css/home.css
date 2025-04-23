@@ -266,7 +266,7 @@
 }
 
 .homepage .active-users-frame .category-title {
-    font-family: "Dancing Script";
+    font-family: "Roboto Serif";
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
@@ -281,16 +281,15 @@
 }
 
 .homepage .cards-frame .card {
-    height: 335px;
-    width: 290px;
+    margin: 5px;
+    min-height: 305px;
+    min-width: 301px;
     cursor: pointer;
 }
 
 .homepage .cards-frame .member-nickname {
-    width: 65px;
-    font-weight: 500;
-    flex-direction: row;
-    align-items: center;
+    font-size: medium;
+    text-align: center;
 }
 
 .homepage .cards-frame .no-data {
@@ -306,8 +305,8 @@
     font-size: 30px;
     line-height: 34px;
     color: #e3c00d;
-}
-
+} 
+ 
 
 /** EVENTS **/
 
