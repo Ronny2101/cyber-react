@@ -69,7 +69,7 @@ export default function OrdersPage() {
               <Box className={"other-user-address"}>
                 <div className={"address-txt"}>
                   <LocationOnIcon />
-                  UZBEKSISTAN, SURKHANDARYA 
+                  UZBEKISTAN, SURKHANDARYA 
                 </div>
               </Box>
             </Box>
