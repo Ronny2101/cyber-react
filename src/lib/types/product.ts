@@ -1,6 +1,7 @@
 import { ProductCollection, ProductSize, ProductStatus } from "../enums/product.enum";
 
 export interface Product {
+    imagePath: string | undefined;
     _id: string;
     productStatus : ProductStatus;
     productCollection : ProductCollection;
@@ -12,8 +13,8 @@ export interface Product {
     productDesc?: string;
     productImages: string[];
     productViews : number;
-    createAt: Date;
-    updateAt: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 export interface ProductInquiry {
