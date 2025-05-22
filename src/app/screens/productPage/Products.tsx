@@ -19,6 +19,7 @@ import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
+import { CartItem } from "../../../lib/types/search";
 
 /** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -29,6 +30,10 @@ const actionDispatch = (dispatch: Dispatch) => ({
 const productRetriever = createSelector(retrieveProducts, (products) => ({
     products
 }))
+
+interface ProductsProps {
+  onAdd: (item: CartItem) => void;
+}
 
 // const products = [
 //  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
@@ -41,11 +46,12 @@ const productRetriever = createSelector(retrieveProducts, (products) => ({
 //  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
 // ];
 
-export default function Products() {
-const { setProducts } = actionDispatch(useDispatch());
-const { products } = useSelector(productRetriever);
-const [ productSearch, setProductSearch] = useState<ProductInquiry>({
-    
+export default function Products(props:ProductsProps) {
+    const { onAdd } = props;
+    const { setProducts } = actionDispatch(useDispatch());
+    const { products } = useSelector(productRetriever);
+    const [ productSearch, setProductSearch] = useState<ProductInquiry>({
+        
             page: 1,
             limit: 8,
             order: "createdAt",
@@ -68,7 +74,7 @@ const [ productSearch, setProductSearch] = useState<ProductInquiry>({
             productSearch.search = "";
             setProductSearch({...productSearch });
         }
-    }, [productSearch]);
+    }, [searchText]);
 
     /**HANDLERS */
     
@@ -244,7 +250,20 @@ const [ productSearch, setProductSearch] = useState<ProductInquiry>({
                                             sx={{ backgroundImage: `url(${imagePath})`}}
                                         >
                                             <div className={"product-sale"}>{sizeVolume}</div>
-                                            <Button className={"shop-btn"}>
+                                            <Button 
+                                                className={"shop-btn"}
+                                                onClick={(e) => {
+                                                    console.log("BUTTON PRESSED!");
+                                                    onAdd({
+                                                        _id: product._id,
+                                                        quantity: 1,
+                                                        name: product.productName,
+                                                        price: product.productPrice,
+                                                        image: product.productImages[0],
+                                                    });
+                                                    e.stopPropagation();
+                                                }}
+                                            >
                                                 <img 
                                                     src={"/icons/shopping-cart.svg"}
                                                     style={{ display: "flex" }}
