@@ -12,8 +12,8 @@ import Basket from "./Basket";
 import React, { useEffect, useState } from "react";
 import { CartItem } from "../../../lib/types/search";
 // import { useGlobals } from "../../hooks/useGlobals";
-import { serverApi } from "../../../lib/config";
-import { Logout } from "@mui/icons-material";
+// import { serverApi } from "../../../lib/config";
+// import { Logout } from "@mui/icons-material";
 
 interface HomeNavbarProps {
   cartItems: CartItem[];
@@ -23,10 +23,10 @@ interface HomeNavbarProps {
   onDeleteAll: () => void;
   setSignupOpen: (isOpen: boolean) => void;
   setLoginOpen: (isOpen: boolean) => void;
-  handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
-  anchorEl: HTMLElement | null;
-  handleCloseLogout: () => void;
-  handleLogoutRequest: () => void;
+  // handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
+  // anchorEl: HTMLElement | null;
+  // handleCloseLogout: () => void;
+  // handleLogoutRequest: () => void;
 }
 
 export default function HomeNavbar(props: HomeNavbarProps) {
@@ -38,12 +38,12 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     onDeleteAll,
     setSignupOpen,
     setLoginOpen,
-    handleLogoutClick,
-    anchorEl,
-    handleCloseLogout,
-    handleLogoutRequest
+    // handleLogoutClick,
+    // anchorEl,
+    // handleCloseLogout,
+    // handleLogoutRequest
   } = props;
-  const { authMember } = useGlobals();
+  const authMember = null;
 
   // Handlers
 
@@ -109,12 +109,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               <img
                 className="user-avatar"
                 src={
-                  authMember?.memberImage
-                    ? `${serverApi}/${authMember?.memberImage}`
-                    : "/icons/default-user.svg"
+                  // authMember?.memberImage
+                  //   ? `${serverApi}/${authMember?.memberImage}`
+                  //   : "/icons/default-user.svg"
+                  "/icons/default-user.svg"
                 }
                 aria-haspopup={"true"}
-                onClick={handleLogoutClick}
+                // onClick={handleLogoutClick}
               />
             )}
 
