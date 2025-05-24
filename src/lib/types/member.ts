@@ -24,7 +24,7 @@ export interface MemberInput  {
     memberAddress?: string;
     memberDesc?: string;
     memberImage?: string;
-    memberPoints: number;
+    memberPoints?: number;
 }
 
  

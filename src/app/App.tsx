@@ -8,24 +8,24 @@ import  HomeNavbar  from "./components/headers/HomeNavbar";
 import  OtherNavbar  from "./components/headers/OtherNavbar";
 import  Footer  from "./components/footer";
 import HelpPage  from "./screens/helpPage";
+import useBasket from "./hooks/useBasket";
+import AuthenticationModal from "./components/auth";
+import Test from "./screens/Test";
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
-import Test from "./screens/Test";
-import useBasket from "./hooks/useBasket";
-import AuthenticationModal from "./components/auth";
  
 
 function App() {
   const location = useLocation();
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
-  const [ signupOpen, setsignupOpen ] = useState<boolean>(false);
-  const [ loginOpen, setloginOpen ] = useState<boolean>(false);
+  const [ signupOpen, setSignupOpen ] = useState<boolean>(false);
+  const [ loginOpen, setLoginOpen ] = useState<boolean>(false);
 
   /**HANDLERS */
 
-  const handleSignupClose = () => setsignupOpen(false);
-  const handleLoginClose = () => setloginOpen(false);
+  const handleSignupClose = () => setSignupOpen(false);
+  const handleLoginClose = () => setLoginOpen(false);
 
   return  (
     <>
@@ -36,6 +36,8 @@ function App() {
         onRemove= { onRemove } 
         onDelete= { onDelete } 
         onDeleteAll= { onDeleteAll }
+        setSignupOpen={ setSignupOpen }
+        setLoginOpen={ setLoginOpen }
       /> 
       ) : ( 
         <OtherNavbar 
@@ -44,6 +46,8 @@ function App() {
           onRemove= { onRemove } 
           onDelete= { onDelete } 
           onDeleteAll= { onDeleteAll }
+          setSignupOpen={ setSignupOpen }
+          setLoginOpen={ setLoginOpen }
         /> 
       )}
       <Switch>

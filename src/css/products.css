@@ -93,7 +93,7 @@
     margin-top: 70px;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   .products-page .products .dishes-filter-section .dishes-filter-box {
@@ -132,7 +132,7 @@
   .products-page .products .category-main {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     transform: rotate(-90deg);
   }
 
