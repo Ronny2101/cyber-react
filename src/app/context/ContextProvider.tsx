@@ -16,10 +16,11 @@ const ContextProvider: React.FC<{children: ReactNode }> = ({children}) => {
     console.log("=== verify ===");
 
     return   (
-        <GlobalContext.Provider value={{ authMember, setAuthMember, orderBuilder, setOrderBuilder }}>
+        <GlobalContext.Provider 
+          value={{ authMember, setAuthMember, orderBuilder, setOrderBuilder }}>
             {children}
         </GlobalContext.Provider>
-    )
+    );
 };
 
 export default ContextProvider;

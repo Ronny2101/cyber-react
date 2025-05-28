@@ -1,7 +1,7 @@
 import { ProductCollection, ProductSize, ProductStatus } from "../enums/product.enum";
 
 export interface Product {
-    imagePath: string | undefined;
+    //imagePath: string | undefined;
     _id: string;
     productStatus : ProductStatus;
     productCollection : ProductCollection;

@@ -30,7 +30,7 @@ export default function Footer() {
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />
               <img src={"/icons/twitter.svg"} />
-              <img src={"/icons/instagram.svg"} />
+              <img src={"/icons/instagram.svg"}/>
               <img src={"/icons/youtube.svg"} />
             </Box>
           </Stack>
