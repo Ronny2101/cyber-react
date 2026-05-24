@@ -6,13 +6,14 @@ import { Product } from "./product";
 
 /** REACT APP STATE */
 export interface AppRootState {
-    ordersPage: any;
     homePage: HomePageState;
     productsPage: ProductsPageState;
+    ordersPage: OrdersPageState;
 }
 
 /** HOMEPAGE */
 export interface HomePageState {
+    popularCategory: Product[]
     popularDishes: Product[];
     newDishes: Product[];
     topUsers: Member[];

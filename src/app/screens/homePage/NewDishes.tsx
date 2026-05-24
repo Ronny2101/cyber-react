@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from '@mui/joy/Card';
 import CardOverflow  from "@mui/joy/CardOverflow";
@@ -12,15 +12,16 @@ import { createSelector } from "reselect";
 import { retrieveNewDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
+import { CartItem } from "../../../lib/types/search";
 import { ProductCollection } from "../../../lib/enums/product.enum";
  
 
-const newDishes = [
-    {productName: "Lavash", imagePath: "/img/lavash.webp"},
-    {productName: "Cutlet", imagePath: "/img/cutlet.webp"},
-    {productName: "Kebab", imagePath: "/img/kebab.webp"},
-    {productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
-];
+// const newDishes = [
+//     {productName: "Lavash", imagePath: "/img/lavash.webp"},
+//     {productName: "Cutlet", imagePath: "/img/cutlet.webp"},
+//     {productName: "Kebab", imagePath: "/img/kebab.webp"},
+//     {productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
+// ];
 
 /** REDUX SLICE & SELECTOR */
 const newDishesRetriever = createSelector(
@@ -28,8 +29,12 @@ const newDishesRetriever = createSelector(
   (newDishes) => ({ newDishes,
 }));
 
+interface NewDishes {
+    onAdd: (item: CartItem) => void;
+  }
 
-export default function NewDishes() {
+export default function NewDishes(props: NewDishes) {
+    const { onAdd } = props;
  const { newDishes } = useSelector(newDishesRetriever);
     
  console.log("newDishes:",newDishes);
@@ -39,31 +44,49 @@ export default function NewDishes() {
         <div className={"new-products-frame"}>
             <Container>
                 <Stack className={"main"}>
-                  <Box className={"category-title"}>Fresh Menu</Box>
+                  <Box className={"category-title"}>Popular Cameras</Box>
                   <Stack className={"cards-frame"}>
                     <CssVarsProvider>
                         { newDishes.length !== 0 ? (
                             newDishes.map((product: Product) => {
                                 const imagePath = `${serverApi}/${product.productImages[0]}`
-                                const sizeVolume = product.productCollection === ProductCollection.DRINK 
-                                ? product.productVolume + "l"
-                                : product.productSize + " size";
+                                const sizeVolume = product.productCollection === ProductCollection.PHONES 
+                                ? product.productColor + ""
+                                : product.productSize + "";
                                 return (
                                     <Card key={product._id} variant="outlined" className={"card"}>
                                         <CardOverflow>
-                                            <div className="product-sale">{sizeVolume}</div>
+                                            {/* <div className="product-sale">{sizeVolume}</div> */}
                                             <AspectRatio ratio="1">
                                              <img src={imagePath} alt="" />
                                             </AspectRatio>
                                         </CardOverflow>
+                                        {/* <Button 
+                                                className={"shop-btn"}
+                                                onClick={(e) => {
+                                                    onAdd({
+                                                        _id: product._id,
+                                                        quantity: 1,
+                                                        name: product.productName,
+                                                        price: product.productPrice,
+                                                        image: product.productImages[0],
+                                                    });
+                                                    e.stopPropagation();
+                                                }}
+                                            >
+                                                <img 
+                                                    src={"/icons/shopping-cart.svg"}
+                                                    style={{ display: "flex" }}
+                                                />
+                                            </Button> */}
 
                                         <CardOverflow variant="soft" className="product-detail">
                                             <Stack className="info">
-                                                <Stack flexDirection={"row"}>
+                                                <Stack className={"info-title"}>
                                                     <Typography className={"title"}>
                                                         {product.productName}
                                                     </Typography>
-                                                    <Divider width="2" height="24" bg="#d9d9d9" />
+                                                    {/* <Divider width="2" height="24" bg="#d9d9d9" /> */}
                                                         <Typography className={"price"}>${product.productPrice}</Typography>
                                                 </Stack>
                                                 <Stack>

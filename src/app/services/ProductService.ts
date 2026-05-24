@@ -4,6 +4,8 @@ import { Product, ProductInquiry } from "../../lib/types/product";
 
 class ProductService {
     private readonly path: string;
+    static productCollection: import("/Users/mac/Desktop/Cyber-react/src/lib/enums/product.enum").ProductCollection;
+    static page: number;
 
     constructor() {
         this.path = serverApi;
@@ -11,20 +13,47 @@ class ProductService {
 
     public async getProducts (input: ProductInquiry): Promise<Product[]> {
         try {
-            let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
-            if (input.productCollection)
-              url +=`&productCollection=${input.productCollection}`;
-            if (input.search) url += `&search=${input.search}`;
-
-            const result = await axios.get(url);
-            console.log("getProducts:", result);
-
-            return result.data;
+          let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
+          
+          if (input.productCollection)
+            url += `&productCollection=${input.productCollection}`;
+          
+          if (input.search) 
+            url += `&search=${input.search}`;
+          
+          if (input.minPrice)
+            url += `&minPrice=${input.minPrice}`;
+          
+          if (input.maxPrice)
+            url += `&maxPrice=${input.maxPrice}`;
+      
+          const result = await axios.get(url);
+          console.log("getProducts:", result);
+      
+          return result.data;
         } catch (err) {
-            console.log("Error,getProducts:", err);
-            throw err;
+          console.log("Error,getProducts:", err);
+          throw err;
         }
-    }
+      }
+      
+
+    // public async getProducts (input: ProductInquiry): Promise<Product[]> {
+    //     try {
+    //         let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
+    //         if (input.productCollection)
+    //           url +=`&productCollection=${input.productCollection}`;
+    //         if (input.search) url += `&search=${input.search}`;
+
+    //         const result = await axios.get(url);
+    //         console.log("getProducts:", result);
+
+    //         return result.data;
+    //     } catch (err) {
+    //         console.log("Error,getProducts:", err);
+    //         throw err;
+    //     }
+    // }
 
     public async getProduct(productId: string): Promise<Product> {
         try {

@@ -47,7 +47,7 @@ export default function UserPage() {
                   <div className={"order-user-icon-box"}>
                     <img 
                       src={
-                        authMember?.memberType === MemberType.RESTAURANT
+                        authMember?.memberType === MemberType.MARKET
                         ? "/icons/restaurant.svg" 
                         : "/icons/user-badge.svg"
                       }
@@ -56,9 +56,10 @@ export default function UserPage() {
                 </div>
                 <span className={"order-user-name"}>{authMember?.memberNick}</span>
                 <span className={"order-user-prof"}>{authMember?.memberType}</span>
-                <span className={"order-user-prof"}>{authMember?.memberAddress 
-                ? authMember.memberAddress
-                : "no address"}</span>
+                <span className={"order-user-prof"}>
+                  {authMember?.memberAddress 
+                    ? authMember.memberAddress
+                    : "no address"}</span>
               </Box>
               <Box className={"user-media-box"}>
                 <FacebookIcon />

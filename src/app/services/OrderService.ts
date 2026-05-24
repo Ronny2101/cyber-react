@@ -3,7 +3,7 @@ import { serverApi } from "../../lib/config";
 import { CartItem } from "../../lib/types/search";
 import { Order, OrderInquiry, OrderItemInput, OrderUpdateInput } from "../../lib/types/order";
 
-class OrderSevice {
+class OrderService {
     private readonly path: string;
 
     constructor() {
@@ -11,7 +11,7 @@ class OrderSevice {
     }
 
     public async createOrder(input: CartItem[]): Promise<Order> {
-        try{
+        try {
             const orderItems: OrderItemInput[] = input.map((cartItem: CartItem) => {
                 return {
                     itemQuantity: cartItem.quantity,
@@ -27,23 +27,21 @@ class OrderSevice {
             console.log("createOrder:", result);
 
             return result.data;
-        } catch (err) {
+        } catch(err) {
             console.log("Error. createOrder:", err);
             throw err;
         }
     }
 
     public async getMyOrders(input: OrderInquiry): Promise<Order[]> {
-        try{
-            // axios.defaults.withCredentials = true
-            const url = `${this.path}/order/all`;
-            const query = `?page=${input.page}&limit==${input.limit}&orderStatus==${input.orderStatus}`;
+        try {
 
-            const result= await axios.post(url + query, {
-                withCredentials: true,
-            });
-            console.log("getMyOrders:", result);
-            
+            const url =`${this.path}/order/all`;
+            const query = `?page=${input.page}&limit=${input.limit}&orderStatus=${input.orderStatus}`;
+
+            const result = await axios.get(url + query, { withCredentials: true });
+            console.log("getMyOrders:",  result);
+
             return result.data;
         } catch (err) {
             console.log("Error. getMyOrders:", err);
@@ -51,15 +49,12 @@ class OrderSevice {
         }
     }
 
-
     public async updateOrder(input: OrderUpdateInput): Promise<Order> {
-        try{
+        try {
             const url = `${this.path}/order/update`;
-            const result= await axios.post(url, input, {
-                withCredentials: true,
-            });
+            const result = await axios.post(url, input, { withCredentials: true });
             console.log("updateOrder:", result);
-            
+
             return result.data;
         } catch (err) {
             console.log("Error. updateOrder:", err);
@@ -69,4 +64,4 @@ class OrderSevice {
 
 }
 
-export default OrderSevice;
+export default OrderService;

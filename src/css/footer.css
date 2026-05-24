@@ -5,7 +5,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
-  color: #e3c08d;
+  color: #efeae3;
 }
 
 .sns-context {
@@ -42,7 +42,7 @@
 }
 
 .foot-category-link a {
-  color: #e3c08d;
+  color: #f5f1ea;
   text-decoration: none;
   cursor: pointer;
 }
@@ -68,7 +68,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
-  color: #e3c08d;
+  color: #d9d6d1;
 }
 
 .copyright-txt {
@@ -78,7 +78,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
-  color: #e3c08d;
+  color: #e5e1db;
 }
 
 .foot-category-title:after {

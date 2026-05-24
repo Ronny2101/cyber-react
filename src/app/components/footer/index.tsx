@@ -7,7 +7,7 @@ const Footers = styled.div`
   width: 100%;
   height: 590px;
   display: flex;
-  background: #343434;
+  background: black;
   background-size: cover;
 `;
 
@@ -20,12 +20,13 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+              <img width={"150px"} src={"/icons/cybers.PNG"} />
             </Box>
             <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
+              CYBER project focuses on technology and 
+              innovation, built with modern web tools 
+              to deliver efficiency, performance 
+              and a futuristic experience.
             </Box>
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />
@@ -61,11 +62,11 @@ export default function Footer() {
                   </Box>
                   <Box className={"find-us"}>
                     <span>P.</span>
-                    <div>+971 4 554 7777</div>
+                    <div>+971 4 555 7777</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>E.</span>
-                    <div>devexuz@gmail.com</div>
+                    <div>cyberuz@gmail.com</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>H.</span>

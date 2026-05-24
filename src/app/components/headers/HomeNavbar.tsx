@@ -41,9 +41,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     handleLogoutClick,
     anchorEl,
     handleCloseLogout,
-    handleLogoutRequest
+    handleLogoutRequest,
   } = props;
-  const {authMember} = useGlobals();
+  const { authMember } = useGlobals();
 
   // Handlers
 
@@ -53,7 +53,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/burak.svg" />
+              <img className="brand-logo" src="/icons/cybers.PNG" />
             </NavLink>
           </Box>
           <Stack className="links">
@@ -112,13 +112,11 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                   authMember?.memberImage
                     ? `${serverApi}/${authMember?.memberImage}`
                     : "/icons/default-user.svg"
-                 
                 }
                 aria-haspopup={"true"}
                 onClick={handleLogoutClick}
               />
             )}
-
             <Menu
               anchorEl={anchorEl}
               id="account-menu"
@@ -165,8 +163,8 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         </Stack>
         <Stack className="header-frame">
           <Stack className="detail">
-            <Box className="head-main-txt">World's Most Delicious Cousine</Box>
-            <Box className="wel-txt">The Choice, not just a choice</Box>
+            <Box className="head-main-txt">Smart Devices for a Smarter Life</Box>
+            <Box className="wel-txt">Discover the Power of Technology</Box> 
             <Box className="service-text">24 hour service</Box>
             <Box className="signup">
               {!authMember ? (

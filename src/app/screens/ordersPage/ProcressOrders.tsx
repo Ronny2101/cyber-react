@@ -101,7 +101,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                                     <p>Total</p>
                                     <p>${order.orderTotal}</p>
                                 </Box>
-                                <p className={"data-comp"}>
+                                <p className={"data-compl"}>
                                     {moment().format("YY-MM-DD HH:mm")}
                                 </p>
                                 <Button 

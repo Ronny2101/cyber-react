@@ -38,24 +38,24 @@ export default function OrdersPage() {
   const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
     page:1,
     limit: 5,
-    orderStatus: OrderStatus.PAUSE
+    orderStatus: OrderStatus.PAUSE,
   });
 
   useEffect(() => {
     const order = new OrderSevice();
 
     order
-      .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PAUSE})
+      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.PAUSE })
       .then((data) => setPausedOrders(data))
       .catch((err) => console.log(err));
 
-      order
-      .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PROCESS})
+    order
+      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.PROCESS })
       .then((data) => setProcessOrders(data))
       .catch((err) => console.log(err));
 
-      order
-      .getMyOrders({...orderInquiry, orderStatus: OrderStatus.FINISH})
+    order
+      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.FINISH })
       .then((data) => setFinishedOrders(data))
       .catch((err) => console.log(err));
 
@@ -109,7 +109,7 @@ export default function OrdersPage() {
                   <div className={"order-user-icon-box"}>
                       <img 
                         src={
-                          authMember?.memberType === MemberType.RESTAURANT
+                          authMember?.memberType === MemberType.MARKET
                             ? "/icons/restaurant.svg" 
                             : "/icons/user-badge.svg"}
                         className={"order-user-prof-img"}
@@ -124,7 +124,7 @@ export default function OrdersPage() {
                 <div style={{display: "flex"}}>
                    <LocationOnIcon />
                 </div>
-                <div className={"address-txt"}>
+                <div className={"spec-address-txt"}>
                   {authMember?.memberAddress 
                     ? authMember.memberAddress
                     : "Do not exist"}
@@ -135,18 +135,18 @@ export default function OrdersPage() {
               <Box className={"member-card-box"}>
                  <div>
                     <input type={"text"} placeholder={"Card number:**** 4090 2002 7495"}
-                     className={"card-number-input"} />
+                     className={"card-input"} />
                  </div>
 
                  <div>
                     <input type={"text"} placeholder={"Card Period Data"}
-                     className={"card-info-input"} />
+                     className={"card-half-input"} />
                     <input type={"text"} placeholder={"CVV : 010"}
-                     className={"card-info-input"} />
+                     className={"card-half-input"} />
                  </div>
                  <div >
                    <input type={"text"} placeholder={"Other Name"}
-                    className={"card-number-input"} />
+                    className={"card-input"} />
                  </div>
                  <div className={"card-image"}>
                    <img src={"icons/western-card.svg"}/>

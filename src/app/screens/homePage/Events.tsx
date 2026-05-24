@@ -1,9 +1,9 @@
 import { Box, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { plans } from "../../../lib/data/plans";
+import React from "react";
 
-SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 export default function Events() {
   return (
@@ -27,7 +27,7 @@ export default function Events() {
             clickable: true,
           }}
           autoplay={{
-            delay: 2000,
+            delay: 6000,
             disableOnInteraction: true,
           }}
         >
@@ -43,7 +43,7 @@ export default function Events() {
                       <div className={"event-title-speaker"}>
                         <strong>{value.title}</strong>
                         <div className={"event-organizator"}>
-                          <img src={"/icons/speaker.svg"} />
+                          {/* <img src={"/icons/speaker.svg"} /> */}
                           <p className={"spec-text-author"}>{value.author}</p>
                         </div>
                       </div>
@@ -82,4 +82,6 @@ export default function Events() {
       </Stack>
     </div>
   );
-}
+};
+
+

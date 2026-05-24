@@ -12,21 +12,12 @@
     flex-direction: row;
 }
 
-.order-page .order-container .order-left {
+.order-page .order-left {
     width: 860px;
     height: auto;
 }
 
-.order-page .order-container .order-left .order-nav-frame {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border-bottom: 1px solid #f8f8ff;
-}
-
-.order-page .order-container .order-right {
+.order-page .order-right {
     width: 360px;
     height: auto;
     margin-top: 86px;
@@ -35,7 +26,7 @@
     flex-direction: column;
 }
 
-.order-page .order-right .order-info-box{
+.order-page .order-right .order-info-box {
     width: 360px;
     height: auto;
     padding: 20px;
@@ -68,7 +59,7 @@
     align-items: center;
 }
 
-.order-page .order-info-box .order-user-avatar {
+.order-page .order-info-box .order-user-img .order-user-avatar {
     width: 117px;
     height: 112px;
     filter: drop-shadow(0px 4px 4px rgb(0, 0, 0, 0.25));
@@ -99,8 +90,6 @@
     font-size: 28px;
     font-weight: 500;
     line-height: 36px;
-    letter-spacing: 0%;
-    text-align: left;
 }
 
 .order-page .order-info-box .order-user-prof {
@@ -112,14 +101,14 @@
     font-style: normal;
 }
 
-.order-page .order-info-box .other-user-address {
+.order-page .order-info-box .order-user-address {
     width: 90%;
     display: flex;
     flex-direction: row;
 }
 
-.order-page .order-info-box .address-txt {
-    margin-left: 2px;
+.order-page .order-info-box .spec-address-txt {
+    margin-left: 5px;
     color: rgb(0, 0, 0);
     font-family: DM Sans;
     font-size: 16px;
@@ -134,23 +123,23 @@
     flex-direction: column;
 }
 
-.order-page .order-info-box .card-number-input {
+.order-page .order-info-box .card-input {
     margin-top: 10px;
     padding: 10px;
     width: 100%;
     height: 40px;
     font-family: Commissioner;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 36px;
-    letter-spacing: 0%;
+    letter-spacing: -0.02em;
     text-align: left;
     background: #f8f8ff;
     border-radius: 10px;
     border: 0.5px solid rgb(119, 119, 119);
 }
 
-.order-page .order-info-box .card-info-input {
+.order-page .order-info-box .card-half-input {
     margin-top: 10px;
     margin-right: 8px;
     padding: 10px;
@@ -170,7 +159,6 @@
 
 .order-page .order-info-box .card-image {
    margin-top: 35px;
-   margin-left: 20px;
    width: 80%;
    display: flex;
    flex-direction: row;
@@ -178,8 +166,29 @@
    cursor: pointer;
 }
 
+.order-page .order-info-box .css-wca78v-MuiButtonBase-root-MuiButton-root {
+    max-width: 160px;
+}
+
+.order-page .order-left .order-nav-frame {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid #f8f8ff;
+}
+
 .order-page .order-left .order-nav-frame .table_list {
     display: flex;
+    justify-content: space-between;
+}
+
+.order-page .css-1gsv261 {
+    width: 75%;
+}
+
+.order-page .css-heg063-MuiTabs-flexContainer {
     justify-content: space-between;
 }
 
@@ -188,14 +197,20 @@
     height: auto;
 }
 
+.order-page .css-19kzrtu {
+    padding-top: 24px;
+}
+
 .order-page .order-main-content .order-main-box {
     position: relative;
     width: 100%;
     max-height: 285px;
     margin-bottom: 25px;
     border-radius: 16px;
-    box-shadow: inset 0px 4px 16px 0px rgba(242, 189, 87, 0.04),inset 0px 4px 10px 9px rgb(211, 211, 231),-12px 12px 4px 0px rgb(186, 186, 191);
+    box-shadow: -13px 16px 14px rgba(87, 86, 84, 0.04);
     background: rgb(248, 248, 254);
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .order-page .order-main-content .order-main-box .order-box-scroll {
@@ -206,6 +221,16 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    border-radius: 16px;
+}
+
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar {
+    width: 7px;
+}
+
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar-thumb {
+    background-color: #8989db;
+    border-radius: 50px;
 }
 
 .order-page .order-box-scroll .orders-name-price {
@@ -222,9 +247,8 @@
     position: relative;
     width: 50px;
     height: 47px;
-    border-radius: 50%;
+    border-radius: 29px;
     background-size: cover;
-    cursor: pointer;
 }
 
 .order-page .order-box-scroll .orders-name-price .title-dish {
@@ -234,11 +258,10 @@
     margin-left: 20px;
     color: rgb(0, 0, 0);
     font-family: Commissioner;
+    font-style: normal;
     font-size: 22px;
     font-weight: 500;
     line-height: 36px;
-    letter-spacing: 0%;
-    text-align: left;
 }
 
 .order-page .order-box-scroll .orders-name-price .price-box {
@@ -259,22 +282,21 @@
     font-weight: 400;
     line-height: 27px;
     letter-spacing: 0%;
-    text-align: left;
 }
 
 .order-page .order-main-content .order-main-box .total-price-box {
     position: relative;
-    width: 93%;
+    width: 100%;
     height: 41px;
     margin: 7px 0 7px 0;
     margin-bottom: 13px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     box-sizing: border-box;
     border-radius: 5px;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .order-page .order-main-content .total-price-box .cancel-button {
@@ -294,37 +316,35 @@
 .order-page .order-main-content .total-price-box .verify-button {
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-height: 40px;
     background: #0288d1;
     color: #f8f8ff;
 }
 
 .order-page .order-main-content .order-main-box .total-price-box .box-total {
     position: relative;
-    height: 36px;
+    max-width: 535px;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .order-page .total-price-box .box-total p {
     margin-left: 20px;
     color: rgb(38, 38, 38);
     font-family: Commissioner;
+    font-style: normal;
     font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    letter-spacing: 0%;
-    text-align: center;
+    font-weight: 500;
+    line-height: 36px;
 }
 
-.order-page .total-price-box .box-total .data-comp {
+.order-page .total-price-box .box-total .data-compl {
     color: rgb(38, 38, 38);
     font-family: Commissioner;
+    font-style: normal;
     font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    letter-spacing: 0%;
-    text-align: center;
+    font-weight: 500;
+    line-height: 36px;
 }

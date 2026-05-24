@@ -158,7 +158,7 @@ export function Settings() {
       <Box className={"save-box"}>
         <Button 
           variant={"contained"} 
-          onChange={handleSubmitButton}
+          onClick={handleSubmitButton}
         >
           Save
         </Button>

@@ -11,7 +11,7 @@ import { CartItem } from "../../../lib/types/search";
 import { Messages, serverApi } from "../../../lib/config";
 import { useGlobals } from "../../hooks/useGlobals";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
-import OrderSevice from "../../services/OrderService";
+import OrderService from "../../services/OrderService";
 
 interface BasketProps {
     cartItems: CartItem[];
@@ -48,7 +48,7 @@ export default function Basket(props: BasketProps) {
       handleClose();
       if (!authMember) throw new Error(Messages.error2);
       
-      const order = new OrderSevice();
+      const order = new OrderService();
       await order.createOrder(cartItems);
 
       onDeleteAll();
@@ -173,4 +173,4 @@ export default function Basket(props: BasketProps) {
       </Menu>
     </Box>
   );
-}
+};

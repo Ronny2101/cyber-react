@@ -1,4 +1,4 @@
-import { ProductCollection, ProductSize, ProductStatus } from "../enums/product.enum";
+import { ProductCollection, ProductSize, ProductStatus, RefrigeratorSize, TvSize } from "../enums/product.enum";
 
 export interface Product {
     //imagePath: string | undefined;
@@ -9,7 +9,9 @@ export interface Product {
     productPrice: number;
     productLeftCount : number;
     productSize : ProductSize;
-    productVolume: number;
+    tvSize: TvSize;
+    refrigeratorSize: RefrigeratorSize;
+    productColor: string;
     productDesc?: string;
     productImages: string[];
     productViews : number;
@@ -23,4 +25,9 @@ export interface ProductInquiry {
     limit: number;
     productCollection?: ProductCollection;
     search?: string;
+    minPrice?: number;
+    maxPrice?: number;
 }
+
+
+  

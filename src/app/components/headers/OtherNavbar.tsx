@@ -13,6 +13,7 @@ import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
+import React from "react";
 
 interface OtherNavbarProps {
     cartItems: CartItem[];
@@ -29,7 +30,8 @@ interface OtherNavbarProps {
 }
 
 export default function OtherNavbar(props: OtherNavbarProps) {
-    const { cartItems,
+    const { 
+        cartItems,
         onAdd,
         onRemove,
         onDelete,
@@ -39,7 +41,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
         handleLogoutClick,
         anchorEl,
         handleCloseLogout,
-        handleLogoutRequest} =props;
+        handleLogoutRequest} = props;
     const {authMember} = useGlobals();
     return    (
         <div className="other-navbar">
@@ -47,7 +49,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
             <Stack className="menu">
                 <Box>
                     <NavLink to={"/"}>
-                        <img className="brand-logo" src="/icons/burak.svg" />
+                        <img className="brand-logo" src="/icons/cybers.PNG" />
                     </NavLink>
                 </Box>
                 <Stack className="links">

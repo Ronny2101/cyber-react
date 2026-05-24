@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Box, Button, Container,Stack, } from "@mui/material";
+import { Box, Button, Container, MenuItem,Rating,Select,Stack, Typography, } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import RemoveRedEyeIcon  from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import Pagination from "@mui/material/Pagination";
@@ -20,6 +20,7 @@ import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
+import Carousel from "./carusel";
 
 /** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -35,16 +36,6 @@ interface ProductsProps {
   onAdd: (item: CartItem) => void;
 }
 
-// const products = [
-//  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-//  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-//  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-//  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-//  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-//  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-//  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-//  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-// ];
 
 export default function Products(props:ProductsProps) {
     const { onAdd } = props;
@@ -55,7 +46,7 @@ export default function Products(props:ProductsProps) {
             page: 1,
             limit: 8,
             order: "createdAt",
-            productCollection: ProductCollection.DISH,
+            productCollection: ProductCollection.CAMERAS,
             search: "",
         });
 
@@ -75,9 +66,20 @@ export default function Products(props:ProductsProps) {
             setProductSearch({...productSearch });
         }
     }, [searchText]);
+    
+    useEffect(() => {
+        const product = new ProductService();
+        product.getProducts(productSearch)
+          .then(data => setProducts(data))
+          .catch(err => console.log(err));
+      }, [productSearch]);
+      
 
     /**HANDLERS */
+
+      
     
+
     const searchCollectionHandler = (collection: ProductCollection) => {
        productSearch.page = 1;
        productSearch.productCollection = collection;
@@ -106,7 +108,7 @@ export default function Products(props:ProductsProps) {
 
     return (
         <div className={"products"}>
-            <Container>
+             <Container>
                 <Stack flexDirection={"column"} alignItems={"center"}>
                     <Stack className={"avatar-big-box"}>
                         <Stack
@@ -115,7 +117,9 @@ export default function Products(props:ProductsProps) {
                             alignItems={"center"}
                             className={"top-text"}
                         >
-                        <Box className={"restaurant-title"}>Burak Restaurant</Box>
+                           <Box className={"restaurant-title"}>Shop Page</Box>
+                        </Stack>
+                        <Stack className={"search"}>
                             <Stack flexDirection={"row"} alignItems={"center"} className={"search-box"}>
                                 <input 
                                     type={"text"} 
@@ -128,8 +132,8 @@ export default function Products(props:ProductsProps) {
                                     }}
                                 />
                                 <Button
-                                    variant={"contained"}
-                                    color={"primary"}
+                                    // variant={"contained"}
+                                    // color={"primary"}
                                     startIcon={<SearchIcon />}
                                     className={"search-button"}
                                     onClick={searchProductHandler}
@@ -137,98 +141,99 @@ export default function Products(props:ProductsProps) {
                                     SEARCH
                                 </Button>
                             </Stack>
+                            <Stack className={"dishes-filter-box"}>
+                                <Box display="flex" alignItems="center" gap={1}>
+                                    <Typography variant="body2" color="black">
+                                        Sort By:
+                                    </Typography>
+
+                                    <Select
+                                        size="small"
+                                        value={productSearch.order}
+                                        onChange={(e) => searchOrderHandler(e.target.value)}
+                                        sx={{ minWidth: 150 }}
+                                    >
+                                        <MenuItem value="createdAt">News</MenuItem>
+                                        <MenuItem value="productPrice">Price</MenuItem>
+                                        <MenuItem value="productViews">Views</MenuItem>
+                                    </Select>
+                                 </Box>
+                  
+                            </Stack>
                         </Stack>
+                    </Stack>
+                    <Stack className={"categories-box"}>
+                        <Button 
+                            className={"category-box1"}
+                             onClick={() =>searchCollectionHandler(ProductCollection.CAMERAS)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/camera-50.png"} />
+                            </Box>
+                            <span className={"title"}>Cameras</span> 
+                        </Button>
+                        <Button 
+                            className={"category-box1"}
+                            onClick={() =>searchCollectionHandler(ProductCollection.TV)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/tv-50.png"} />
+                            </Box>
+                            <span className={"title"}>Tv</span> 
+                        </Button>
+                        <Button 
+                            className={"category-box1"}
+                            onClick={() =>searchCollectionHandler(ProductCollection.COMPUTERS)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/macbook-pro-m4.png"} />
+                            </Box>
+                                <span className={"title"}>Computers</span> 
+                        </Button>
+                        <Button 
+                            className={"category-box1"}
+                            onClick={() =>searchCollectionHandler(ProductCollection.PHONES)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/smartphone.png"} />
+                            </Box>
+                                <span className={"title"}>Phones</span> 
+                        </Button>
+                        <Button
+                            className={"category-box1"} 
+                            onClick={() =>searchCollectionHandler(ProductCollection.SMARTWATCHES)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/smart-watch-50.png"} />
+                            </Box>
+                                <span className={"title"}>SmartWatches</span> 
+                        </Button>
+                        <Button
+                            className={"category-box1"} 
+                            onClick={() =>searchCollectionHandler(ProductCollection.REFRIGERATOR)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/refrigerator-50.png"} />
+                            </Box>
+                                <span className={"title"}>Refrigerator</span> 
+                        </Button>
+                        <Button 
+                            className={"category-box1"}
+                            onClick={() =>searchCollectionHandler(ProductCollection.OTHER)}
+                        >
+                            <Box className={"category-img"}>
+                                <img src={"/icons/cpu-50.png"} />
+                            </Box>
+                            <span className={"title"}>Other</span> 
+                        </Button>
                     </Stack>
 
                     <Stack className={"dishes-filter-section"}>
-                        <Stack className={"dishes-filter-box"}>
-                            <Button 
-                                variant={"contained"}
-                                className={"order"}
-                                color={
-                                    productSearch.order === "createdAt" ? "primary" : "secondary"
-                                }
-                                onClick={() => searchOrderHandler("createdAt")}
-                            >
-                                New
-                            </Button>
-                            <Button 
-                                variant={"contained"}
-                                className={"order"}
-                                color={
-                                    productSearch.order === "productPrice" ? "primary" : "secondary"
-                                }
-                                onClick={() => searchOrderHandler("productPrice")}
-                            >
-                                Price
-                            </Button>
-                            <Button 
-                                variant={"contained"}
-                                className={"order"}
-                                color={
-                                    productSearch.order === "productViews" ? "primary" : "secondary"
-                                }
-                                onClick={() => searchOrderHandler("productViews")}
-                            >
-                                Views
-                            </Button>
-                        </Stack>
                     </Stack>
 
                     <Stack className={"list-category-section"}>
                     <Stack className={"product-category"}>
-                        <div className={"category-main"}>
-                            <Button 
-                                variant={"contained"}
-                                color={
-                                    productSearch.productCollection === ProductCollection.OTHER 
-                                    ? "primary" 
-                                    : "secondary"}
-                                onClick={() =>searchCollectionHandler(ProductCollection.OTHER)}
-                            >
-                                Other
-                            </Button>
-                            <Button 
-                                variant={"contained"} 
-                                color={
-                                    productSearch.productCollection === ProductCollection.DESERT 
-                                    ? "primary" 
-                                    : "secondary"}
-                                onClick={() =>searchCollectionHandler(ProductCollection.DESERT)}
-                            >
-                                Desert
-                            </Button>
-                            <Button 
-                                variant={"contained"} 
-                                color={
-                                    productSearch.productCollection === ProductCollection.DRINK 
-                                    ? "primary" 
-                                    : "secondary"}
-                                onClick={() =>searchCollectionHandler(ProductCollection.DRINK)}
-                            >
-                                Drink
-                            </Button>
-                            <Button 
-                                variant={"contained"} 
-                                color={
-                                    productSearch.productCollection === ProductCollection.SALAD 
-                                    ? "primary" 
-                                    : "secondary"}
-                                onClick={() =>searchCollectionHandler(ProductCollection.SALAD)}
-                            >
-                                Salad
-                            </Button>
-                            <Button 
-                                variant={"contained"} 
-                                color={
-                                  productSearch.productCollection === ProductCollection.DISH 
-                                  ? "primary" 
-                                  : "secondary"}
-                                onClick={() =>searchCollectionHandler(ProductCollection.DISH)}
-                            >
-                                Dish
-                            </Button>
-                        </div>
+                         
                     </Stack>
 
                     <Stack className={"product-wrapper"}>
@@ -236,9 +241,12 @@ export default function Products(props:ProductsProps) {
                             products.map((product: Product) => {
                                 const imagePath = `${serverApi}/${product.productImages[0]}`;
                                 const sizeVolume = 
-                                product.productCollection === ProductCollection.DRINK
-                                ? product.productVolume + "litre"
-                                :product.productSize + " size";
+                                product.productCollection === ProductCollection.PHONES ||
+                                product.productCollection === ProductCollection.COMPUTERS ||
+                                product.productCollection === ProductCollection.TV ||
+                                product.productCollection === ProductCollection.REFRIGERATOR
+                                ? product.productSize + ""
+                                : product.productColor + "";
                                 return (
                                     <Stack 
                                         key={product._id} 
@@ -249,7 +257,7 @@ export default function Products(props:ProductsProps) {
                                             className={"product-img"}
                                             sx={{ backgroundImage: `url(${imagePath})`}}
                                         >
-                                            <div className={"product-sale"}>{sizeVolume}</div>
+                                            {/* <div className={"product-sale"}>{sizeVolume}</div> */}
                                             <Button 
                                                 className={"shop-btn"}
                                                 onClick={(e) => {
@@ -283,10 +291,12 @@ export default function Products(props:ProductsProps) {
                                             <span className={"product-title"}>
                                                 {product.productName}
                                             </span>
+                                            <div className={"product-sale"}>{sizeVolume}</div>
                                             <div className={"product-desc"}>
-                                                <MonetizationOnIcon />
+                                                <AttachMoneyIcon />
                                                 {product.productPrice}
                                             </div>
+                                            <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
                                         </Box>
                                     </Stack>
                                 );
@@ -322,23 +332,9 @@ export default function Products(props:ProductsProps) {
             </Container>
         
             <div className={"brands-logo"}>
-                <Container className={"family-brands"}>
-                    <Box className={"category-title"}>Our Family Brands</Box>
-                    <Stack className={"brand-list"}>
-                            <Box className={"review-box"}>
-                            <img src={"/img/gurme.png"} />
-                            </Box> 
-                            <Box className={"review-box"}>
-                            <img src={"/img/sweets.png"} />
-                            </Box> 
-                            <Box className={"review-box"}>
-                            <img src={"/img/seafood.png"} />
-                            </Box> 
-                            <Box className={"review-box"}>
-                            <img src={"/img/doner.png"} />
-                            </Box> 
-                    </Stack>
-                </Container>
+                <div className={"family-brands"}>
+                   <Carousel />
+                </div>
             </div>
             
             <div className={"address"}>
@@ -347,7 +343,7 @@ export default function Products(props:ProductsProps) {
                         <Box className={"title"}>Our address</Box>
                         <iframe 
                             style={{marginTop: "60px"}}
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95921.86029841103!2d69.24383806795467!3d41.296720245239506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b704b18669b%3A0xf6fe4f90a44a98fe!2sCZN%20Burak%20Gurme!5e0!3m2!1sen!2skr!4v1745642929687!5m2!1sen!2skr"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21928.31291548617!2d69.25272060119083!3d41.296563483691585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b48a35ed52f%3A0x6d868958ae00961!2sTashkent%20City%20Mall!5e0!3m2!1sen!2skr!4v1761067850640!5m2!1sen!2skr"
                             width="1320"
                             height="500"
                             referrerPolicy="no-referrer-when-downgrade"
