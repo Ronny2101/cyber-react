@@ -29,12 +29,9 @@ const newDishesRetriever = createSelector(
   (newDishes) => ({ newDishes,
 }));
 
-interface NewDishes {
-    onAdd: (item: CartItem) => void;
-  }
 
-export default function NewDishes(props: NewDishes) {
-    const { onAdd } = props;
+
+export default function NewDishes() {
  const { newDishes } = useSelector(newDishesRetriever);
     
  console.log("newDishes:",newDishes);
