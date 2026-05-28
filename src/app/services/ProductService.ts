@@ -1,10 +1,11 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
 import { Product, ProductInquiry } from "../../lib/types/product";
+import { ProductCollection } from "../../lib/enums/product.enum";
 
 class ProductService {
     private readonly path: string;
-    static productCollection: import("/Users/mac/Desktop/Cyber-react/src/lib/enums/product.enum").ProductCollection;
+    static productCollection: ProductCollection;
     static page: number;
 
     constructor() {
